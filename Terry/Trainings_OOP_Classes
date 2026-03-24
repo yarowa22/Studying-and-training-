@@ -1,0 +1,112 @@
+class Classroom:
+    def __init__(self):
+            self.bookings = {}
+
+    def room_number(self, room_number):
+        return room_number        
+    def capacity(self, capacity):
+        return capacity
+    def booking_list(self, booking_list):
+        return booking_list
+    
+    def is_available(self,  time_slot):
+        # Check if the classroom is available at the given time slot and return True or False
+        pass
+    def book_class(self, time_slot, class_name):
+        # Book the classroom for the given time slot and class name, and return a confirmation message
+        pass
+    def __str__(self) -> str:
+        return f"Classroom {self.room_number} with capacity {self.capacity}"
+       
+class BookingSystem:
+    def list_of_classrooms(self, add_classroom):
+        # Return a list of available classrooms
+        pass    
+    def find_available_classrooms(self, time_slot):
+        # Return a list of classrooms that are available at the given time slot
+        pass
+    def book_room(self, room_number, time_slot, class_name):
+        # Book the specified classroom for the given time slot and class name, and return a confirmation message
+        pass
+    #Testing Create classrooms, add to system, book rooms, print available rooms
+classroom1 = Classroom()
+classroom2 = Classroom()    
+booking_system = BookingSystem()
+booking_system.list_of_classrooms(classroom1)
+booking_system.list_of_classrooms(classroom2)
+booking_system.book_room("Room 777", "9:00 AM - 10:00 AM", "Math")
+available_classrooms = booking_system.find_available_classrooms("9:00 AM - 10:00 AM")
+print("Available Classrooms = ", available_classrooms)
+
+
+#Remote Control and TV
+#TV Class
+class TV:
+    def __init__(self):
+        self.is_on = False
+        self.volume = 10
+        self.channel = 1
+
+    def turn_on(self):
+        self.is_on = True
+        return "TV is now ON"
+
+    def turn_off(self):
+        self.is_on = False
+        return "TV is now OFF"
+
+    def change_channel(self, channel):
+        if self.is_on:
+            self.channel = channel
+            return f"Channel changed to {self.channel}"
+        else:
+            return "TV is OFF. Please turn it ON first."
+
+    def adjust_volume(self, volume):
+        if self.is_on:
+            self.volume += volume
+            return f"Volume adjusted to {self.volume}"
+        else:
+            return "TV is OFF. Please turn it ON first."
+#Remote Control Class
+class RemoteControl:
+    def __init__(self, tv):
+        self.tv = tv
+
+    def power(self):
+        if self.tv.is_on:
+            return self.tv.turn_off()
+        else:
+            return self.tv.turn_on()   
+
+    def adjust_volume(self, volume):
+        return self.tv.adjust_volume(volume)
+    def press_on_button(self):
+        return self.tv.turn_on()
+    def press_off_button(self):
+        return self.tv.turn_off()
+    def press_channel_button(self, channel):
+        return self.tv.change_channel(channel)
+    def press_volume_button(self, volume):
+        return self.tv.adjust_volume(volume)
+#Testing TV and Remote Control
+my_tv = TV()
+my_remote = RemoteControl(my_tv)
+
+print(my_remote.press_on_button())
+print(my_remote.press_off_button())
+print(my_remote.press_channel_button(5))
+print(my_remote.press_volume_button(3))
+
+#OOP Maths
+import math 
+#Population growth (growth): V(t) = A * e^(k t), k > 0
+class Population_growth:
+    def __init__(self, initial_population, growth_rate):
+        self.initial_population = initial_population
+        self.growth_rate = growth_rate
+    def continious_model(self, t):
+        return self.initial_population * math.exp(self.growth_rate * t)
+    
+
+  
