@@ -86,3 +86,83 @@ print(traf_sensor.display_info())
 print(traf_sensor.report_traffic())
 print(air_qual_sensor.check_air_quality())
 #done
+
+
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+    def get_details(self):
+        return f"Book info: Title:{self.title}, Author: {self.author}, Pages: {self.pages}"
+class Library:
+    def __init__(self, library_name):
+        self.library_name = library_name
+        self.books = []
+    def add_book(self, book_object):
+        self.books.append(book_object)
+        
+    def list_books(self):
+        for book in self.books:
+            print(book.get_details())
+        #return f"List of books : {self.books}"
+    def remove_book(self, title):       
+        for book in self.books:
+            if book.title == title:
+                self.books.remove(book)
+        
+book1 = Book("Any", "Pushkin", 640)
+book2 = Book("Anny", "BlaBla", 400)
+book3 = Book("Masha i medvedi", "Pupirka", 7004)
+
+my_library = Library("SupaDupa")
+
+my_library.add_book(book1)
+my_library.add_book(book2)
+my_library.add_book(book3)
+
+print("---Books are---")
+my_library.list_books()
+
+my_library.remove_book("Anny")
+
+print("---Books after remove--")
+my_library.list_books()
+
+
+class Room:
+    def __init__(self, room_number, available=True):
+        self.room_number = room_number
+        self.available = available
+    def book_room(self):
+        self.available = False
+    def cancel_booking(self):
+        self.available = True
+class Guest:
+    def __init__(self, name):
+        self.name = name
+        self.room = None
+    def book(self, room):
+        self.room = room
+        if room.available:
+            room.book_room()
+            print(f"{self.name} booked room {room.room_number}")
+        else:
+            print("Room is not available")            
+        
+    def cancel(self):
+        if self.room is not None:
+            self.room.cancel_booking()
+            print(f"{self.name} canceled room {self.room.room_number}")
+        else:
+            print("No room booked")
+            
+room1 = Room(105)
+guest1 = Guest("Terry")
+
+guest1.book(room1)
+print("Room available:" ,room1.available)
+
+guest1.cancel()
+print("Room available after cancellation:", room1.available)
+
